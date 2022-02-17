@@ -17,7 +17,9 @@
     regnas="hidden"
   }
 	async function doPost () {
-    fetch("http://localhost:3000/login", {
+    var host = location.protocol + '//' + location.hostname;
+    alert(host)
+    fetch(host+ ":3000/login", {
       method: 'post', // Default is 'get'
       body: (JSON.stringify({
         username: user,
@@ -32,8 +34,9 @@
 .then(json => console.log('Response', json))
 	}
 async function regpost () {
+  var host =location.protocol + '//' + location.hostname;
   if(pass==pass2){
-    fetch("http://localhost:3000/register", {
+    fetch(host+":3000/register", {
       method: 'post', // Default is 'get'
       body: (JSON.stringify({
         username: user,
