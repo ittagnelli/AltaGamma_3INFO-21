@@ -23,12 +23,13 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.post("/login", function(req,res){
-  console.log(req.body.username)
-  console.log(req.body.password)
-    if(req.body.username=="admin"&&req.body.password=="admin"){
-      res.send({status:1})
-    }else{
-      res.send({status:0})
+for(var user of Object.keys(utenti))
+    {
+      if(req.body.username==utenti[user][0]&&req.body.password==utenti[user][1]){
+        res.send({status:1})
+      }else{
+        res.send({status:0})
+      }
     }
 });
 app.post("/register", function(req,res){

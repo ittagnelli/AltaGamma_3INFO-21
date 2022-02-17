@@ -55,7 +55,6 @@
   }
 	async function doPost () {
     var host = location.protocol + '//' + location.hostname;
-    alert(host)
     fetch(host+ ":3000/login", {
       method: 'post', // Default is 'get'
       body: (JSON.stringify({
