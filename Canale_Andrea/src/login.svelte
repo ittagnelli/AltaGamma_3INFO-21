@@ -65,5 +65,7 @@ async function regpost () {
   Registrati
 </button>
 </div>
-
+<style>
+  
+</style>
 

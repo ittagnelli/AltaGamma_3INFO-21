@@ -14,6 +14,7 @@ function close(){
 try {
   const data = fs.readFileSync('user.json', 'utf8')
   utenti=JSON.parse(data)
+  i=Object.keys(utenti).length;
 } catch (err) {
   console.error(err)
 }
