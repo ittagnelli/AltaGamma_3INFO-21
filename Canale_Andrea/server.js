@@ -32,7 +32,8 @@ app.post("/login", function(req,res){
     }
 });
 app.post("/register", function(req,res){
-  var newuser=[req.body.username,req.body.password];
+  var newuser=[req.body.username,req.body.password,req.body.piano,req.body.pag];
+  console.log(req.body.pag)
   utenti[i]=newuser;
   i++;
   res.send({reg:1})

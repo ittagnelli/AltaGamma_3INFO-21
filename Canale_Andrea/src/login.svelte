@@ -1,3 +1,38 @@
+<div class="Blog" id="login">
+<input bind:value={user} placeholder="Inserisci la tua email"/>
+<input bind:value={pass} placeholder="Inserisci la tua password"/>
+<input bind:value={pass2} hidden="{nascosto}" placeholder="Conferma la tua password" />
+<button type="button" on:click={funzione} >
+	{logtext}
+</button>
+<button type="button" on:click={registrapage} hidden="{regnas}">
+  Registrati
+</button>
+</div>
+<div id="piani" hidden={nascosto}>
+  <form action="">
+    <p>Seleziona il piano che vuoi acquistare</p>
+    <input type="radio" id="100"  value="HTML">
+    <label for="html">100GB|0,99$ al mese/</label><br>
+    <input type="radio" id="500"  value="CSS">
+    <label for="css">500GB|4,99$ al mese/</label><br>
+    <input type="radio" id="1000"  value="JavaScript">
+    <label for="javascript">1TB|6,99$ al mese/</label>
+    <input type="radio" id="2000"  value="JavaScript">
+    <label for="javascript">2TB|8,99$ al mese/</label>
+  </form>
+  <form action="">
+    <p>Seleziona il tipo di pagamento</p>
+    <input type="radio" id="anno"  value="anno">
+    <label for="html">Pagamento annuale</label><br>
+    <input type="radio" id="mese"  value="mese">
+    <label for="css">Pagamento mensile</label><br>
+  </form>
+</div>
+<style>
+
+</style>
+
 <script>
   import { Router, Route, Link } from "svelte-navigator";
   export let loginRoute;
@@ -9,6 +44,8 @@
   let nascosto="hidden"
   let logtext="Login"
   let regnas=""
+  let pianosel=[]
+  let pag=""
   let funzione=doPost
   function registrapage(){
     nascosto=""
@@ -35,12 +72,28 @@
 	}
 async function regpost () {
   var host =location.protocol + '//' + location.hostname;
+  if(document.getElementById("100").checked==true){
+    pianosel.push("100GB")
+  }else if(document.getElementById("500").checked==true){
+    pianosel.push("500GB")
+  }else if(document.getElementById("1000").checked==true){
+    pianosel.push("1000GB")
+  }else if(document.getElementById("2000").checked==true){
+    pianosel.push("2000GB")
+  }
+  if(document.getElementById("anno").checked==true){
+    pianosel.push("anno")
+  }else if(document.getElementById("mese").checked==true){
+    pianosel.push("mese")
+  }
   if(pass==pass2){
     fetch(host+":3000/register", {
       method: 'post', // Default is 'get'
       body: (JSON.stringify({
         username: user,
-        password: pass
+        password: pass,
+        piano:pianosel[0],
+        pag:pianosel[1]
       })),
       mode: 'cors',
       headers: new Headers({
@@ -53,19 +106,5 @@ async function regpost () {
   alert("Le password non corrispondono")
 }
 }
-</script>
-<div class="Blog" id="login">
-<input bind:value={user} placeholder="Inserisci la tua email"/>
-<input bind:value={pass} placeholder="Inserisci la tua password"/>
-<input bind:value={pass2} hidden="{nascosto}" placeholder="Conferma la tua password" />
-<button type="button" on:click={funzione} >
-	{logtext}
-</button>
-<button type="button" on:click={registrapage} hidden="{regnas}">
-  Registrati
-</button>
-</div>
-<style>
-  
-</style>
 
+</script>
