@@ -6,11 +6,18 @@ const app = express();
 const port = 3000;
 const path = require('path');
 var i=0;
+var utenti={}
 const { response } = require('express');
 function close(){
   res.connection.close();
 }
-var utenti={}
+try {
+  const data = fs.readFileSync('user.json', 'utf8')
+  utenti=JSON.parse(data)
+} catch (err) {
+  console.error(err)
+}
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -24,10 +31,18 @@ app.post("/login", function(req,res){
     }
 });
 app.post("/register", function(req,res){
-  var newuser=[req.body.username,req.body.pass];
+  var newuser=[req.body.username,req.body.password];
   utenti[i]=newuser;
   i++;
   res.send({reg:1})
+  fs.writeFile('user.json', JSON.stringify(utenti), err => {
+    if (err) {
+      console.error(err)
+      return
+    }
+    //file written successfully
+  })
+  
 });
 app.post("/folder", function(req,res){
 
