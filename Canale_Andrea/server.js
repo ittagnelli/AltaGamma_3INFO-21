@@ -33,8 +33,7 @@ for(var user of Object.keys(utenti))
     }
 });
 app.post("/register", function(req,res){
-  var newuser=[req.body.username,req.body.password,req.body.piano,req.body.pag];
-  console.log(req.body.pag)
+  var newuser=[req.body.username,req.body.password,req.body.piano,req.body.pag,req.body.met];
   utenti[i]=newuser;
   i++;
   res.send({reg:1})

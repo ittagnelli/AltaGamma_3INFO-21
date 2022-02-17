@@ -13,13 +13,13 @@
   <form action="">
     <p>Seleziona il piano che vuoi acquistare</p>
     <input type="radio" id="100"  value="HTML">
-    <label for="html">100GB|0,99$ al mese/</label><br>
+    <label for="html">100GB | 0,99&euro; al mese/  9,99&euro; all'anno</label><br>
     <input type="radio" id="500"  value="CSS">
-    <label for="css">500GB|4,99$ al mese/</label><br>
+    <label for="css">500GB | 4,99&euro; al mese / 51.99&euro; all'anno</label><br>
     <input type="radio" id="1000"  value="JavaScript">
-    <label for="javascript">1TB|6,99$ al mese/</label>
+    <label for="javascript">1TB | 6,99&euro; al mese / 79,99&euro; all'anno</label>
     <input type="radio" id="2000"  value="JavaScript">
-    <label for="javascript">2TB|8,99$ al mese/</label>
+    <label for="javascript">2TB | 8,99&euro; al mese / 92,99&euro; all'anno</label>
   </form>
   <form action="">
     <p>Seleziona il tipo di pagamento</p>
@@ -27,6 +27,17 @@
     <label for="html">Pagamento annuale</label><br>
     <input type="radio" id="mese"  value="mese">
     <label for="css">Pagamento mensile</label><br>
+  </form>
+  <form action="">
+    <p>Seleziona il metodo di pagamento</p>
+    <input type="radio" id="cc"  value="anno">
+    <label for="html">Carta di credito</label><br>
+    <input type="radio" id="paypal"  value="mese">
+    <label for="css">PayPal</label><br>
+    <input type="radio" id="crypto"  value="mese">
+    <label for="css">Crypto</label><br>
+    <input type="radio" id="bonifico"  value="mese">
+    <label for="css">Bonifico bancario</label><br>
   </form>
 </div>
 <style>
@@ -85,6 +96,15 @@ async function regpost () {
   }else if(document.getElementById("mese").checked==true){
     pianosel.push("mese")
   }
+  if(document.getElementById("cc").checked==true){
+    pianosel.push("CC")
+  }else if(document.getElementById("paypal").checked==true){
+    pianosel.push("paypal")
+  }else if(document.getElementById("crypto").checked==true){
+    pianosel.push("crypto")
+  }else if(document.getElementById("bonifico").checked==true){
+    pianosel.push("bonifico")
+  }
   if(pass==pass2){
     fetch(host+":3000/register", {
       method: 'post', // Default is 'get'
@@ -92,7 +112,8 @@ async function regpost () {
         username: user,
         password: pass,
         piano:pianosel[0],
-        pag:pianosel[1]
+        pag:pianosel[1],
+        met:pianosel[2]
       })),
       mode: 'cors',
       headers: new Headers({
