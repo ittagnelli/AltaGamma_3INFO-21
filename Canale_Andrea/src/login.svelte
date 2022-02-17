@@ -12,31 +12,31 @@
 <div id="piani" hidden={nascosto}>
   <form action="">
     <p>Seleziona il piano che vuoi acquistare</p>
-    <input type="radio" id="100"  value="HTML">
+    <input type="radio" id="100"  name="size" value="size">
     <label for="html">100GB | 0,99&euro; al mese/  9,99&euro; all'anno</label><br>
-    <input type="radio" id="500"  value="CSS">
+    <input type="radio" id="500"  name="size" value="size">
     <label for="css">500GB | 4,99&euro; al mese / 51.99&euro; all'anno</label><br>
-    <input type="radio" id="1000"  value="JavaScript">
+    <input type="radio" id="1000"  name="size" value="size">
     <label for="javascript">1TB | 6,99&euro; al mese / 79,99&euro; all'anno</label>
-    <input type="radio" id="2000"  value="JavaScript">
+    <input type="radio" id="2000"  name="size" value="size">
     <label for="javascript">2TB | 8,99&euro; al mese / 92,99&euro; all'anno</label>
   </form>
   <form action="">
     <p>Seleziona il tipo di pagamento</p>
-    <input type="radio" id="anno"  value="anno">
+    <input type="radio" id="anno"  name="pag" value="pag">
     <label for="html">Pagamento annuale</label><br>
-    <input type="radio" id="mese"  value="mese">
+    <input type="radio" id="mese"  name="pag" value="pag">
     <label for="css">Pagamento mensile</label><br>
   </form>
   <form action="">
     <p>Seleziona il metodo di pagamento</p>
-    <input type="radio" id="cc"  value="anno">
+    <input type="radio" id="cc"  name="met" value="met">
     <label for="html">Carta di credito</label><br>
-    <input type="radio" id="paypal"  value="mese">
+    <input type="radio" id="paypal"  name="met" value="met">
     <label for="css">PayPal</label><br>
-    <input type="radio" id="crypto"  value="mese">
+    <input type="radio" id="crypto"  name="met" value="met">
     <label for="css">Crypto</label><br>
-    <input type="radio" id="bonifico"  value="mese">
+    <input type="radio" id="bonifico"  name="met" value="met">
     <label for="css">Bonifico bancario</label><br>
   </form>
 </div>
