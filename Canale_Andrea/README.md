@@ -10,4 +10,4 @@ per provare le API eseguire questi comandi:
 npm install
 npm run dev & node server.js
 ```
-questo riguarda la build di sviluppo, nella produzione verrà eseguito la compilazione dei file svelte per avere il sito in html e useremo express.js per una perfetta integrazione con le API
+Questo riguarda la build di sviluppo, nella produzione verrà eseguita la compilazione dei file svelte per avere il sito in html e useremo express.js per una perfetta integrazione con le API
