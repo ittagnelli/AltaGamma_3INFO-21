@@ -3,10 +3,12 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs')
 const app = express();
-const port = 3000;
+const port = 3001;
 const path = require('path');
 var i=0;
 var utenti={}
+//joining path of directory 
+const directoryPath = path.join(__dirname, './');
 const { response } = require('express');
 function close(){
   res.connection.close();
@@ -46,7 +48,25 @@ app.post("/register", function(req,res){
   })
   
 });
+
 app.post("/folder", function(req,res){
+  try {
+    var arrayOfFiles = fs.readdirSync(req.body.user);
+    console.log(arrayOfFiles)
+    res.send(arrayOfFiles)
+  } catch(e) {
+    console.log(e)
+    res.send("Error 500")
+  }
+
+});
+app.post("/newfolder", function(req,res){
+  fs.mkdir(path.join(req.body.user, 'test'), (err) => {
+    if (err) {
+        return console.error(err);
+    }
+    console.log('Directory created successfully!');
+});
 
 });
 app.get("/", function(req,res){
