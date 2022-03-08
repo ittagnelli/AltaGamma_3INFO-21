@@ -21,12 +21,25 @@
 
 
   <script>
+	try {
+		const logged = localStorage.getItem('logged');
+    if(logged=="true"){
+      window.location.href="/area"
+    }
+	} catch (error) {
+		
+	}
     function reg(){
       window.location.href="/registrati"
     }
-    function area(stato) {
+    function area(stato,user,pass) {
       if(stato==1){
+        localStorage.setItem('logged', 'true');
+        localStorage.setItem('email', user);
+        localStorage.setItem('password', pass)
         window.location.href="/area"
+      }else{
+        alert("Login errato")
       }
     }
     let user = ''
@@ -55,7 +68,7 @@
         })
   })
   .then(response => response.json())
-  .then(json => area(json.status))
+  .then(json => area(json.status,user,pass))
       }
 
   

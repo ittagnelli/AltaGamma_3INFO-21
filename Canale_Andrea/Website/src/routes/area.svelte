@@ -3,11 +3,30 @@
 </script>
 
 <script>
-	import Counter from '$lib/Counter.svelte';
-import { create_out_transition } from 'svelte/internal';
+import { onMount } from "svelte";
 	let user=''
+	try {
+		const logged = localStorage.getItem('logged');
+		user=localStorage.getItem('email')
+    if(logged==null){
+      window.location.href="/login"
+    }
+	} catch (error) {
+		onMount(async () => {
+			window.location.href="/login"
+	});
+		
+	}
+
+	
 	function creo(cartelle) {
-		document.getElementById("cartelle").innerHTML=""
+		console.log("Eccome")
+		if(cartelle.status==500){
+			alert("Cartella non trovata")
+		}else if(cartelle.status==501){
+			alert("Cartella esistente")
+		}else{
+			document.getElementById("cartelle").innerHTML=""
 		for (let index = 0; index < cartelle.length; index++) {
 			var para = document.createElement("p");
 			var node = document.createTextNode(cartelle[index]);
@@ -23,6 +42,7 @@ import { create_out_transition } from 'svelte/internal';
 			}
 			var element = document.getElementById("cartelle");
 				element.appendChild(para);
+		}
 		}
 	}
 	function create() {
@@ -46,6 +66,7 @@ import { create_out_transition } from 'svelte/internal';
       method: 'post', // Default is 'get'
       body: (JSON.stringify({
         user: user,
+		folder:prompt("Inserire il nome della cartella che si vuole create:"),
       })),
       mode: 'cors',
       headers: new Headers({
@@ -53,48 +74,38 @@ import { create_out_transition } from 'svelte/internal';
       })
 })
 .then(response => response.json())
-.then(json => creo(json))
+.then(json => creo(json)) //
 create()
 	}
+	onMount(async () => {
+			create()
+	});
+function sub() {
+	alert("Caricamento in corso, attendere")
+}
 </script>
 
 <svelte:head>
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="start.css">
 </svelte:head>
-
-<img src="./folder@1x.png" width="32" on:click={create}/>
 <img src="./folder@1x.png" width="32" on:click={neu}/>
-<input bind:value={user} placeholder="enter your user">
-<h1>{user}</h1>
+<p>Crea cartella</p>
 <div id="cartelle">
 
 </div>
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-	}
+<form ref='uploadForm' 
+      id='uploadForm' 
+      action='http://localhost:3001/upload' 
+      method='post' 
+      encType="multipart/form-data"
+	  on:submit={sub}>
+        <input type="file" name="sampleFile" />
+		<input type="hidden" name="user" value={user} />
+		<input type='submit' value='Upload!' />
+    </form>    
+<style global>
+	@import 'filepond/dist/filepond.css';
+@import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
 </style>

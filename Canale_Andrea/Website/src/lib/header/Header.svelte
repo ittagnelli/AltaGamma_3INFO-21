@@ -4,7 +4,7 @@
 </script>
 
 <header>
-	<span>THECLOUD</span><div class="due">.com</div>
+	<span>THECLOUD<a class="due" style="color: white;">.com</a></span>
 	<div class="pul" > 
 	  <a href="/"><button type="button" class="accedi">Home</button></a>
 	  </div>
