@@ -78,9 +78,9 @@ app.post('/upload', function(req, res) {
     res.send('<meta http-equiv="refresh" content="0; URL=http://localhost:3000/area/" />');
   });
 });
-app.post("/delete", function(req,res){
+app.post("/deletefolder", function(req,res){
   try {
-    fs.unlinkSync(req.body.user + '/' + req.body.file)
+    fs.rmdirSync("users/" + req.body.user + req.body.path, { recursive: true });
     console.log("Cancellato")
   } catch(err) {
     console.error(err)

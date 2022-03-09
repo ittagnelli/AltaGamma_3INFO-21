@@ -1,10 +1,28 @@
-<script context="module">
-	export const prerender = true;
-</script>
-
 <script>
-import { onMount } from "svelte";
-import Menu from "../menu/CustomMenu.svelte";
+	import Menu from './Menu.svelte';
+	import MenuOption from './MenuOption.svelte';
+	import MenuDivider from './MenuDivider.svelte';
+	import { tick } from 'svelte'
+	
+	import Icon from './Icon.svelte'
+	
+	let pos = { x: 0, y: 0 };
+	let showMenu = false;
+	
+	async function onRightClick(e) {
+		if (showMenu) {
+			showMenu = false;
+			await new Promise(res => setTimeout(res, 100));
+		}
+		
+		pos = { x: e.clientX, y: e.clientY };
+		showMenu = true;
+	}
+	
+	function closeMenu() {
+		showMenu = false;
+	}
+	import { onMount } from "svelte";
 	let user=''
 	let name='/'
 	let old='/'
@@ -117,30 +135,15 @@ function sub() {
 }
 </script>
 
-<svelte:head>
-	<title>Home</title>
-	<link rel="stylesheet" type="text/css" href="start.css">
-</svelte:head>
-<Menu/>
-<img id="cartest" src="./folder@1x.png" width="32" on:click|preventDefault={event => neu(event.path[0].id)}/>
-<p>Crea cartella</p>
-<img id="cartest" src="./folder@1x.png" width="32" on:click={removefolder}/>
-<p>Rimuovi cartella</p>
-<div id="cartelle">
+{#if showMenu}
+	<Menu {...pos} on:click={closeMenu} on:clickoutside={closeMenu}>
+		<MenuOption 
+			on:click={event => neu(name)} 
+			text="Crea cartella" />
+		<MenuOption 
+			on:click={removefolder} 
+			text="Rimuovi cartella" />
+	</Menu>
+{/if}
 
-</div>
-<form ref='uploadForm' 
-      id='uploadForm' 
-      action='http://localhost:3001/upload' 
-      method='post' 
-      encType="multipart/form-data"
-	  on:submit={sub}>
-        <input type="file" name="sampleFile" />
-		<input type="hidden" name="user" value={user} />
-		<input type='submit' value='Upload!' />
-    </form>    
-<style global>
-	@import 'filepond/dist/filepond.css';
-@import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
-
-</style>
+<svelte:body on:contextmenu|preventDefault={onRightClick} />
