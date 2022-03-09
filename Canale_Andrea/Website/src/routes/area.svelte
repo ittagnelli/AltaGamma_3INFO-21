@@ -6,6 +6,7 @@
 import { onMount } from "svelte";
 	let user=''
 	let name='/'
+	let old='/'
 	try {
 		const logged = localStorage.getItem('logged');
 		user=localStorage.getItem('email')
@@ -36,11 +37,19 @@ import { onMount } from "svelte";
 				var img=document.createElement("img");
 				img.src="folder@1x.png"
 				img.id=cartelle[index]
+				img.addEventListener("click", function(e){
+					old=name
+					name=name+e.path[0].id
+					create(name)
+				})
 				para.appendChild(img)
 			}else{
 				var img=document.createElement("img");
 				img.src="file.png"
 				img.id=cartelle[index]
+				img.addEventListener("click", function(e){
+					console.log(e.path[0].id)
+				})
 				para.appendChild(img)
 			}
 			var element = document.getElementById("cartelle");
@@ -80,8 +89,7 @@ import { onMount } from "svelte";
 })
 .then(response => response.json())
 .then(json => creo(json)) //
-console.log(nome)
-create(nome)
+create('/'+nome)
 	}
 	onMount(async () => {
 			create(name)
@@ -95,7 +103,7 @@ function sub() {
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="start.css">
 </svelte:head>
-<img src="./folder@1x.png" width="32" on:click|preventDefault={() => neu(this)}/>
+<img id="cartest" src="./folder@1x.png" width="32" on:click|preventDefault={event => neu(event.path[0].id)}/>
 <p>Crea cartella</p>
 <div id="cartelle">
 
