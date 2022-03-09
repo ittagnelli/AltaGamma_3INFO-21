@@ -1,7 +1,7 @@
 var admin = require("firebase-admin");
 const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
-var serviceAccount = require("./thecloud.json");
+var serviceAccount = require("../thecloud.json");
 var check=0
 
 

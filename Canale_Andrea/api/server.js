@@ -24,16 +24,16 @@ app.post("/login", function(req,res){
 app.post("/register", function(req,res){
   writedb(req.body.username,req.body.password,req.body.piano,req.body.pag,req.body.met).then(
     result=>{
-      res.send(result)
-      fs.mkdir(path.join('./users', req.body.username), (err) => {
+      //res.send(result)
+      fs.mkdir(path.join('./users/', req.body.username), (err) => {
         if (err) {
-          res.send({status:500})
+          console.log(err)
         }
-        res.send({status:1})
+        console.log("OKE")
     });
     }
   )
-
+res.send({status:1})
   
 });
 
@@ -91,5 +91,5 @@ res.send("Welcome to cloud API")
 });
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('register'));
-app.listen(port, () => console.log(`Server controller on port ${port}!`));
+app.listen(port, () => console.log(`THECLOUD API started on port ${port}!`));
 
