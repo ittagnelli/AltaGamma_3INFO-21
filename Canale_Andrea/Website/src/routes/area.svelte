@@ -5,6 +5,7 @@
 <script>
 import { onMount } from "svelte";
 	let user=''
+	let name='/'
 	try {
 		const logged = localStorage.getItem('logged');
 		user=localStorage.getItem('email')
@@ -34,10 +35,12 @@ import { onMount } from "svelte";
 			if(cartelle[index].split(".")[1]==null){
 				var img=document.createElement("img");
 				img.src="folder@1x.png"
+				img.id=cartelle[index]
 				para.appendChild(img)
 			}else{
 				var img=document.createElement("img");
 				img.src="file.png"
+				img.id=cartelle[index]
 				para.appendChild(img)
 			}
 			var element = document.getElementById("cartelle");
@@ -45,12 +48,13 @@ import { onMount } from "svelte";
 		}
 		}
 	}
-	function create() {
+	function create(nome) {
 		var host = location.protocol + '//' + location.hostname;
     fetch(host+ ":3001/folder", {
       method: 'post', // Default is 'get'
       body: (JSON.stringify({
         user: user,
+		cartella:nome,
       })),
       mode: 'cors',
       headers: new Headers({
@@ -60,7 +64,8 @@ import { onMount } from "svelte";
 .then(response => response.json())
 .then(json => creo(json))
 	}
-	function neu() {
+	function neu(nome) {
+		
 		var host = location.protocol + '//' + location.hostname;
     fetch(host+ ":3001/newfolder", {
       method: 'post', // Default is 'get'
@@ -75,10 +80,11 @@ import { onMount } from "svelte";
 })
 .then(response => response.json())
 .then(json => creo(json)) //
-create()
+console.log(nome)
+create(nome)
 	}
 	onMount(async () => {
-			create()
+			create(name)
 	});
 function sub() {
 	alert("Caricamento in corso, attendere")
@@ -89,7 +95,7 @@ function sub() {
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="start.css">
 </svelte:head>
-<img src="./folder@1x.png" width="32" on:click={neu}/>
+<img src="./folder@1x.png" width="32" on:click|preventDefault={() => neu(this)}/>
 <p>Crea cartella</p>
 <div id="cartelle">
 

@@ -39,7 +39,8 @@ res.send({status:1})
 
 app.post("/folder", function(req,res){
   try {
-    var arrayOfFiles = fs.readdirSync('./users/'+ req.body.user);
+    //console.log(req.body.cartella)
+    var arrayOfFiles = fs.readdirSync('./users/'+ req.body.user + req.body.cartella);
     res.send(arrayOfFiles)
   } catch(e) {
     console.log(e)
