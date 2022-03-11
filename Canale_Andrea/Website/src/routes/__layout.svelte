@@ -9,9 +9,7 @@
 	<slot />
 </main>
 
-<footer>
-	<p>&copy;2022 THECLOUD</p>
-</footer>
+
 
 <style>
 </style>

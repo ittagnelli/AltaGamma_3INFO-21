@@ -106,7 +106,7 @@ img {
     padding: 15px;
     display: none;
     position: absolute; 
-    top: 182px;
+    top: 202px;
     right: 10px;
     left: 10px; 
 }
@@ -120,7 +120,7 @@ img {
     padding: 15px;
     display: none;
     position: absolute; 
-    top: 182px;
+    top: 202px;
     right: 10px;
     left: 10px; 
 }
@@ -134,7 +134,7 @@ img {
     padding: 15px;
     display: none;
     position: absolute; 
-    top: 182px;
+    top: 202px;
     right: 10px;
     left: 10px; 
 }
@@ -293,8 +293,8 @@ button{
     margin-top: 17px;
     background-color: #04aa6da2;
     margin-left: 10px;
-    padding-right: 25px;
-    padding-left: 25px;
+    padding-right: 15px;
+    padding-left: 15px;
     
 }
 button:hover{
