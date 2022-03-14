@@ -59,7 +59,7 @@ import Menu from "../menu/CustomMenu.svelte";
 	}
 	function create(nome) {
 		var host = location.protocol + '//' + location.hostname;
-    fetch("http://ec2-15-160-195-204.eu-south-1.compute.amazonaws.com:3001", {
+    fetch("http://ec2-15-160-195-204.eu-south-1.compute.amazonaws.com:3001/newfolder", {
       method: 'post', // Default is 'get'
       body: (JSON.stringify({
         user: user,
@@ -76,7 +76,7 @@ import Menu from "../menu/CustomMenu.svelte";
 	function neu(nome) {
 		
 		var host = location.protocol + '//' + location.hostname;
-    fetch("http://ec2-15-160-195-204.eu-south-1.compute.amazonaws.com:3001", {
+    fetch("http://ec2-15-160-195-204.eu-south-1.compute.amazonaws.com:3001/folder", {
       method: 'post', // Default is 'get'
       body: (JSON.stringify({
         user: user,
@@ -94,7 +94,7 @@ create('/'+nome)
 	function removefolder() {
 		
 		var host = location.protocol + '//' + location.hostname;
-    fetch("http://ec2-15-160-195-204.eu-south-1.compute.amazonaws.com:3001", {
+    fetch("http://ec2-15-160-195-204.eu-south-1.compute.amazonaws.com:3001/deletefolder", {
       method: 'post', // Default is 'get'
       body: (JSON.stringify({
 		user:user,
@@ -131,7 +131,7 @@ function sub() {
 </div>
 <form ref='uploadForm' 
       id='uploadForm' 
-      action='http://localhost:3001/upload' 
+      action='http://ec2-15-160-195-204.eu-south-1.compute.amazonaws.com:3001/upload' 
       method='post' 
       encType="multipart/form-data"
 	  on:submit={sub}>
