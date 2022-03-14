@@ -1,6 +1,8 @@
+<svelte:head>
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+</svelte:head>
 <link rel="stylesheet" type="text/css" href="login.css">
 <link rel="stylesheet" type="text/css" href="start.css">
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
 <div class="Blog" id="login" >
   <h1>PAGINA DI LOGIN</h1>
     <div class="accesso">
