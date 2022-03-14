@@ -56,7 +56,7 @@
     
       async function doPost () {
         var host = location.protocol + '//' + location.hostname;
-      fetch(host+ ":3001/login", {
+      fetch("http://ec2-15-160-195-204.eu-south-1.compute.amazonaws.com:3001", {
         method: 'post', // Default is 'get'
         body: (JSON.stringify({
           username: user,

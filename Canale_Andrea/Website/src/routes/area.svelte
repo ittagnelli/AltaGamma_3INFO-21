@@ -59,7 +59,7 @@ import Menu from "../menu/CustomMenu.svelte";
 	}
 	function create(nome) {
 		var host = location.protocol + '//' + location.hostname;
-    fetch(host+ ":3001/folder", {
+    fetch("http://ec2-15-160-195-204.eu-south-1.compute.amazonaws.com:3001", {
       method: 'post', // Default is 'get'
       body: (JSON.stringify({
         user: user,
@@ -76,7 +76,7 @@ import Menu from "../menu/CustomMenu.svelte";
 	function neu(nome) {
 		
 		var host = location.protocol + '//' + location.hostname;
-    fetch(host+ ":3001/newfolder", {
+    fetch("http://ec2-15-160-195-204.eu-south-1.compute.amazonaws.com:3001", {
       method: 'post', // Default is 'get'
       body: (JSON.stringify({
         user: user,
@@ -94,7 +94,7 @@ create('/'+nome)
 	function removefolder() {
 		
 		var host = location.protocol + '//' + location.hostname;
-    fetch(host+ ":3001/deletefolder", {
+    fetch("http://ec2-15-160-195-204.eu-south-1.compute.amazonaws.com:3001", {
       method: 'post', // Default is 'get'
       body: (JSON.stringify({
 		user:user,
