@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="login.css">
 <link rel="stylesheet" type="text/css" href="start.css">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
 <div id="piani" >
     
         <div class="accesso" align="center">
