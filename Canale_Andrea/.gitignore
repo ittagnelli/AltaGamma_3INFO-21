@@ -1,6 +1,0 @@
-/node_modules/
-/public/build/
-user.json
-.DS_Store
-thecloud.json
-/api/users/*
