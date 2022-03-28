@@ -9,6 +9,7 @@ import Menu from "../menu/CustomMenu.svelte";
 	let name='/'
 	let old='/'
 	let car='/'
+	let cartelle=[];
 	try {
 		const logged = localStorage.getItem('logged');
 		user=localStorage.getItem('email')
@@ -23,7 +24,7 @@ import Menu from "../menu/CustomMenu.svelte";
 	}
 
 
-	function creo(cartelle) {
+	/*function creo(cartelle) {
 		if(cartelle.status==500){
 			//alert("Cartella non trovata")
 		}else if(cartelle.status==501){
@@ -60,7 +61,7 @@ import Menu from "../menu/CustomMenu.svelte";
 				element.appendChild(para);
 		}
 		}
-	}
+	}*/
 	function create(nome) {
 		console.log("nome:" + nome)
 		var host = location.protocol + '//' + location.hostname;
@@ -76,7 +77,9 @@ import Menu from "../menu/CustomMenu.svelte";
       })
 })
 .then(response => response.json())
-.then(json => creo(json))
+.then(json => cartelle=json)
+.then(ciro => console.log(ciro))
+
 console.log("fatto")
 
 	}
@@ -95,7 +98,9 @@ console.log("fatto")
       })
 })
 .then(response => response.json())
-.then(json => creo(json)) //
+.then(json => cartelle=json) //
+.then(ciro => console.log(ciro))
+
 create(car)
 console.log(car)
 location.reload();
@@ -118,7 +123,9 @@ location.reload();
       })
 })
 .then(response => response.json())
-.then(json => creo(json)) 
+.then(json => cartelle=json)
+.then(ciro => console.log(ciro))
+
 location.reload()
 }
 	}
@@ -145,7 +152,9 @@ function sub() {
 
 <div id="cartelle">
 </div>
-
+{#each cartelle as file}
+<p>{file}</p>
+{/each}
 <form ref='uploadForm'
       id='uploadForm'
       action='http://ec2-15-160-169-49.eu-south-1.compute.amazonaws.com:3001/upload'
