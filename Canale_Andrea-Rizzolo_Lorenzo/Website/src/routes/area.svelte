@@ -8,6 +8,7 @@ import Menu from "../menu/CustomMenu.svelte";
 	let user=''
 	let name='/'
 	let old='/'
+	let car='/'
 	try {
 		const logged = localStorage.getItem('logged');
 		user=localStorage.getItem('email')
@@ -24,9 +25,9 @@ import Menu from "../menu/CustomMenu.svelte";
 
 	function creo(cartelle) {
 		if(cartelle.status==500){
-			alert("Cartella non trovata")
+			//alert("Cartella non trovata")
 		}else if(cartelle.status==501){
-			alert("Cartella esistente")
+			//alert("Cartella esistente")
 		}else{
 			document.getElementById("cartelle").innerHTML=""
 		for (let index = 0; index < cartelle.length; index++) {
@@ -35,17 +36,20 @@ import Menu from "../menu/CustomMenu.svelte";
 			para.appendChild(node);
 			if(cartelle[index].split(".")[1]==null){
 				var img=document.createElement("img");
-				img.src="folder@1x.png"
+				img.src="IMG-1783-removebg-preview.png"
 				img.id=cartelle[index]
+				img.className="folderd"
 				img.addEventListener("click", function(e){
 					old=name
 					name=name+e.path[0].id
 					create(name)
+					console.log(e.path[0].id)
 				})
 				para.appendChild(img)
 			}else{
 				var img=document.createElement("img");
-				img.src="file.png"
+				img.src="file-removebg-preview.png"
+				img.className="filed"
 				img.id=cartelle[index]
 				img.addEventListener("click", function(e){
 					console.log(e.path[0].id)
@@ -58,12 +62,13 @@ import Menu from "../menu/CustomMenu.svelte";
 		}
 	}
 	function create(nome) {
+		console.log("nome:" + nome)
 		var host = location.protocol + '//' + location.hostname;
-    fetch("http://ec2-15-160-169-49.eu-south-1.compute.amazonaws.com:3001/newfolder", {
+    fetch("http://ec2-15-160-169-49.eu-south-1.compute.amazonaws.com:3001/folder", {
       method: 'post', // Default is 'get'
       body: (JSON.stringify({
         user: user,
-		cartella:nome,
+		folder:nome,
       })),
       mode: 'cors',
       headers: new Headers({
@@ -72,15 +77,17 @@ import Menu from "../menu/CustomMenu.svelte";
 })
 .then(response => response.json())
 .then(json => creo(json))
+console.log("fatto")
+
 	}
 	function neu(nome) {
-
+		car=prompt("Inserire il nome della cartella che si vuole create:")
 		var host = location.protocol + '//' + location.hostname;
-    fetch("http://ec2-15-160-169-49.eu-south-1.compute.amazonaws.com:3001/folder", {
+    fetch("http://ec2-15-160-169-49.eu-south-1.compute.amazonaws.com:3001/newfolder", {
       method: 'post', // Default is 'get'
       body: (JSON.stringify({
         user: user,
-		folder:prompt("Inserire il nome della cartella che si vuole create:"),
+		folder:car,
       })),
       mode: 'cors',
       headers: new Headers({
@@ -89,10 +96,15 @@ import Menu from "../menu/CustomMenu.svelte";
 })
 .then(response => response.json())
 .then(json => creo(json)) //
-create('/'+nome)
+create(car)
+console.log(car)
+location.reload();
 	}
 	function removefolder() {
-
+		if(name=="/"){
+		alert("Non puoi eliminare la cartella principale");
+		}else{
+		
 		var host = location.protocol + '//' + location.hostname;
     fetch("http://ec2-15-160-169-49.eu-south-1.compute.amazonaws.com:3001/deletefolder", {
       method: 'post', // Default is 'get'
@@ -106,10 +118,12 @@ create('/'+nome)
       })
 })
 .then(response => response.json())
-.then(json => creo(json)) //
+.then(json => creo(json)) 
 location.reload()
+}
 	}
 	onMount(async () => {
+	console.log(name)
 			create(name)
 	});
 function sub() {
@@ -119,17 +133,19 @@ function sub() {
 
 <svelte:head>
 	<title>Home</title>
-	<link rel="stylesheet" type="text/css" href="start.css">
+	<link rel="stylesheet" type="text/css" href="/start.css">
 </svelte:head>
 <Menu/>
 <h1 class="tit">&nbsp;&nbsp;HOME</h1>
-<div class="opt"><img id="cartest" class="icone"	 src="./folder@1x.png" width="32" on:click|preventDefault={event => neu(event.path[0].id)}/>
-<span>Crea cartella</span></div>
-<div class="opt"><img class="icone" id="cartest" src="./folder@1x.png" width="32" on:click={removefolder}/>
-<span>Rimuovi Cartella</span></div>
-<div id="cartelle" class="wrapper">
+<div><img id="cartest" class="icone"	 src="./IMG-1783-removebg-preview.png" width="32" on:click|preventDefault={event => neu(event.path[0].id)}/>
+</div><!--crea cartella-->
+<div>
+<img class="icone" id="cartest" src="./IMG-1783-removebg-preview.png" width="32" on:click={removefolder}/>
+</div><!--rimuovi cartella-->
 
+<div id="cartelle">
 </div>
+
 <form ref='uploadForm'
       id='uploadForm'
       action='http://ec2-15-160-169-49.eu-south-1.compute.amazonaws.com:3001/upload'

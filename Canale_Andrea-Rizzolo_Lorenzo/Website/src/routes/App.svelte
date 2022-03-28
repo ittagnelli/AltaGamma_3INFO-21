@@ -17,5 +17,3 @@ import Registrati from "./registrati.svelte";
               <button type="button" class="accedi">Registrati</button>
             </div>     
     </header>
-
-  

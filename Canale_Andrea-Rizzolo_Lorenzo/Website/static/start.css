@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap');
 body{
-    background-image: url("sfondo/nuvole.jpg");
+    /*background-image: url("sfondo/sfondo_animato.gif");*/
     background-repeat: no-repeat;
     background-size: cover;
     font-size: 150%;
@@ -10,12 +10,14 @@ body{
     padding: 10px;
     display: block;
     background-attachment: fixed;
+    background-color: white;
 }
 .wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
+
 *{
     font-size: 105%;
     font-family: 'Playfair Display', serif;
@@ -63,7 +65,7 @@ footer{
 }
 
 header{
-    background-color: #04aa6da2;
+    background-color: #13c4839d;
     font-size: 200%;
     color: white;
     font-family: 'Playfair Display', serif;
@@ -96,6 +98,10 @@ img {
     border: 1px solid #000;
     border-radius: 20px;
     box-shadow: 0px 0px 13px 0.5px rgba(0,0,0,0.75);
+    opacity: 0.76;
+    padding: 10px; 
+    width: 30;
+    height: 40;
 }
 
 .cardstyle{
@@ -287,6 +293,9 @@ td /*.title-span*/{
 
 img{
     opacity: 0.76;
+    padding: 10px; 
+    width: 30;
+    height: 40;
 }
 
 button{
@@ -328,10 +337,7 @@ button:hover{
     padding-right: 55px;
     padding-left: 55px;
 }
-.icone{
-    border:0px;
-    padding: 15px;
-}
+
 .opt{
     background-color: #04aa6da2;
     width: 330px;
@@ -353,4 +359,22 @@ input[type="submit"], .file{
     width: 470px;
     box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.75);
     border: 2px solid black;
+}
+.folderd{
+    opacity: 0.76;
+    padding: 10px; 
+    width: 30;
+    height: 40;
+}
+.filed{
+    opacity: 0.76;
+    padding: 10px; 
+    width: 30;
+    height: 40;
+    margin-right: 100px;
+}
+.icone{
+    background-color: white;
+    height: 50px;
+    width: 50px;
 }

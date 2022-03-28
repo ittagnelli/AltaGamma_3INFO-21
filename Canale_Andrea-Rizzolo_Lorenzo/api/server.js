@@ -38,22 +38,30 @@ res.send({status:1})
 });
 
 app.post("/folder", function(req,res){
+  console.log("folder")
+  console.log(req.body.cartella)
+  console.log(req.body.folder)
   try {
-    //console.log(req.body.cartella)
-    var arrayOfFiles = fs.readdirSync('./users/'+ req.body.user + req.body.cartella);
+    
+    var arrayOfFiles = fs.readdirSync('./users/'+ req.body.user + "/"+req.body.cartella);
     res.send(arrayOfFiles)
   } catch(e) {
-    console.log(e)
-    res.send({status:500})
+    var arrayOfFiles = fs.readdirSync('./users/'+ req.body.user + "/"+req.body.folder);
+    res.send(arrayOfFiles)
   }
 
 });
 app.post("/newfolder", function(req,res){
+  console.log("Sono qui" + req.body.folder)
+  console.log("Sono " + req.body.user)
+  console.log("Full:" + './users/'+ req.body.user + "/"+ req.body.folder)
+  //console.log(req)
   try {
-    fs.mkdirSync(path.join('./users/'+ req.body.user, req.body.folder));
+    fs.mkdirSync('./users/'+ req.body.user + "/"+ req.body.folder);
   res.send({status:1})
   } catch (error) {
     res.send({status:501})
+    console.log(error)
   }
 
 
