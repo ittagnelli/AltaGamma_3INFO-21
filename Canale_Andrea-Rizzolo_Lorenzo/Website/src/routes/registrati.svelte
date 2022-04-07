@@ -14,24 +14,32 @@
       <p>Seleziona un piano per utenti</p>
       <div class="spazio">
           <input type="radio" id="100"  name="size" value="size">
-          <span>100 GB | 0,99&euro<span class="mese">/mese</span> |  9,99&euro<span class="mese">/anno</span></span>
+          <span>100 GB | 1,49&euro<span class="mese">/mese</span> |  14,99&euro<span class="mese">/anno</span></span>
+      </div>
+      <div class="spazio">
+          <input type="radio" id="300"  name="size" value="size">
+          <span>300 GB | 2,99&euro<span class="mese">/mese</span> |  29,99&euro<span class="mese">/anno</span></span>
       </div>
       <div class="spazio">
           <input type="radio" id="500"  name="size" value="size">
-          <span>500 GB | 4,99&euro<span class="mese">/mese</span> | 51.99&euro<span class="mese">/anno</span></span>
+          <span>500 GB | 4,99&euro<span class="mese">/mese</span> | 44.99&euro<span class="mese">/anno</span></span>
       </div>
       <div class="spazio">
           <input type="radio" id="1000"  name="size" value="size">
-          <span>1 TB | 6,99&euro<span class="mese">/mese</span> | 79,99&euro<span class="mese">/anno</span></span>
+          <span>1 TB | 6,99&euro<span class="mese">/mese</span> | 69,99&euro<span class="mese">/anno</span></span>
       </div> 
       <div class="spazio">
           <input type="radio" id="2000"  name="size" value="size">
-          <span>2 TB | 8,99&euro<span class="mese">/mese</span> | 92,99&euro<span class="mese">/anno</span></span>
+          <span>2 TB | 8,99&euro<span class="mese">/mese</span> | 94,99&euro<span class="mese">/anno</span></span>
       </div>
       <p>Seleziona un piano Business</p>
       <div class="spazio">
           <input type="radio" id="1"  name="size" value="size">
           <span>1 TB | 6,99&euro<span class="mese">/mese</span> |  49,99&euro<span class="mese">/anno</span></span>
+      </div>
+      <div class="spazio">
+          <input type="radio" id="3"  name="size" value="size">
+          <span>3 TB | 14,99&euro<span class="mese">/mese</span> |  144,99&euro<span class="mese">/anno</span></span>
       </div>
       <div class="spazio">
           <input type="radio" id="5"  name="size" value="size">
@@ -78,7 +86,7 @@
       </div>
     </form>
     <div align="center">
-      <button type="button" id="reg" class="regi" on:click={regpost}>
+      <button type="button" id="reg" class="accedi" on:click={regpost}>
         Conferma la registrazione
       </button>
     </div>

@@ -65,30 +65,35 @@ const analytics = getAnalytics(app);
       <div align="center" class="tab">
           <table>
               <thead>
-                  <th>PIANO&nbsp;UTENTI&nbsp;<span class="info"><a href="#">INFO</a>
-                    <div class="infouno">
-                        Nell'area per Utenti puoi salvare i tuoi<br>
-                        file in tutta comodità, condividerli e<br>
-                        modificarli a tuo piacimento.</div></span></th><th class="centro"></th>
-                  <th>PIANO&nbsp;BUSINESS&nbsp;<span class="info" ><a href="#">INFO</a>
-                    <div class="infouno">
-                        Nell'area Business puoi mettere date di<br>
-                        scadenza ai Files,in caso di certificati<br>
-                        e allo scadere ci saranno dei messaggi <br>
-                        di avviso dall'app.
-                    </div></span></th>
+              <script>
+                function business(){
+                    alert("Nell'area Business puoi mettere date di scadenza ai Files,in caso di certificati e allo scadere ci saranno dei messaggi di avviso nell'app. Tutti i prezzi sono esclusi di iva.");  
+                }
+                function utenti(){
+                    alert("Nell'area per Utenti puoi salvare i tuoi file in tutta comodità, condividerli e modificarli a tuo piacimento."); 
+                }
+              </script>
+              
+                  <th>PIANO&nbsp;UTENTI&nbsp;<span class="info"><span onclick="utenti()">INFO</span>
+                                             </span></th><th class="centro"></th>
+                  <th>PIANO&nbsp;BUSINESS&nbsp;<span class="info" ><span onclick="business()">INFO</span>
+                                               </span></th>
               </thead>
               <tbody>
                   <tr>
-                      <td class="utenti"><span class="title-span">100 GB | 0,99&#8364;<span class="mese">/mese</span>&nbsp;|&nbsp;9,99&#8364<span class="mese">/anno</span></span></td><td class="centro"></td>
+                      <td class="utenti"><span class="title-span">100 GB | 1,49&#8364;<span class="mese">/mese</span>&nbsp;|&nbsp;14,99&#8364<span class="mese">/anno</span></span></td><td class="centro"></td>
                       <td class="bus"><span class="title-span">1 TB | 5,99&#8364;<span class="mese">/mese</span>&nbsp;|&nbsp;49,99&#8364<span class="mese">/anno</span></span></td>
+                  </tr>
+                  <tr>
+                      <td class="utenti"><span class="title-span">300 GB | 2,99&#8364;<span class="mese">/mese</span>&nbsp;|&nbsp;29,99&#8364<span class="mese">/anno</span></span></td><td class="centro"></td>
+                      <td class="bus"><span class="title-span">3 TB | 14,99&#8364;<span class="mese">/mese</span>&nbsp;|&nbsp;144,99&#8364<span class="mese">/anno</span></span></td>
                   </tr>
                   <tr>
                       <td class="utenti"><span class="title-span">500 GB | 4,99&#8364;<span class="mese">/mese</span>&nbsp;|&nbsp;44,99&#8364<span class="mese">/anno</span> </span></td><td class="centro"></td>
                       <td class="bus"><span class="title-span">5 TB | 19,99&#8364; <span class="mese">/mese</span>&nbsp;|&nbsp;179,99&#8364<span class="mese">/anno</span> </span></td>
                   </tr>
                   <tr>
-                      <td class="utenti"><span class="title-span">1 TB | 6,99&#8364;<span class="mese">/mese</span>&nbsp;|&nbsp;79,99&#8364<span class="mese">/anno</span> </span></td><td class="centro"></td>
+                      <td class="utenti"><span class="title-span">1 TB | 6,99&#8364;<span class="mese">/mese</span>&nbsp;|&nbsp;69,99&#8364<span class="mese">/anno</span> </span></td><td class="centro"></td>
                       <td class="bus"><span class="title-span">10 TB | 39,99&#8364; <span class="mese">/mese</span>&nbsp;|&nbsp;439,99&#8364<span class="mese">/anno</span> </span></td>
                   </tr>
                   <tr>
@@ -112,7 +117,7 @@ const analytics = getAnalytics(app);
 
       </div>
 
-          <p align="center"><img src="img/fine.png" width="800" height="350" ></p>
+
           
           <p align="center" class="tutorial">Video tutorial sul funzionamento del sito</p>
   

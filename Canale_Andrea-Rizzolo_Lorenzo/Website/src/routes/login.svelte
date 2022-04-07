@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" type="text/css" href="login.css">
 <link rel="stylesheet" type="text/css" href="start.css">
 <div class="Blog" id="login" >
@@ -22,14 +21,7 @@
 
 
   <script>
-	try {
-		const logged = localStorage.getItem('logged');
-    if(logged=="true"){
-      window.location.href="/area"
-    }
-	} catch (error) {
-		
-	}
+
     function reg(){
       window.location.href="/registrati"
     }

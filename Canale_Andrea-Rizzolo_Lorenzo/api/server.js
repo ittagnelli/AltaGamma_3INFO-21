@@ -100,5 +100,6 @@ res.send("Welcome to cloud API")
 });
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('register'));
+app.use(express.static('users'));
 app.listen(port, () => console.log(`THECLOUD API started on port ${port}!`));
 

@@ -23,45 +23,6 @@ import Menu from "../menu/CustomMenu.svelte";
 
 	}
 
-
-	/*function creo(cartelle) {
-		if(cartelle.status==500){
-			//alert("Cartella non trovata")
-		}else if(cartelle.status==501){
-			//alert("Cartella esistente")
-		}else{
-			document.getElementById("cartelle").innerHTML=""
-		for (let index = 0; index < cartelle.length; index++) {
-			var para = document.createElement("p");
-			var node = document.createTextNode(cartelle[index]);
-			para.appendChild(node);
-			if(cartelle[index].split(".")[1]==null){
-				var img=document.createElement("img");
-				img.src="IMG-1783-removebg-preview.png"
-				img.id=cartelle[index]
-				img.className="folderd"
-				img.addEventListener("click", function(e){
-					old=name
-					name=name+e.path[0].id
-					create(name)
-					console.log(e.path[0].id)
-				})
-				para.appendChild(img)
-			}else{
-				var img=document.createElement("img");
-				img.src="file-removebg-preview.png"
-				img.className="filed"
-				img.id=cartelle[index]
-				img.addEventListener("click", function(e){
-					console.log(e.path[0].id)
-				})
-				para.appendChild(img)
-			}
-			var element = document.getElementById("cartelle");
-				element.appendChild(para);
-		}
-		}
-	}*/
 	function create(nome) {
 		console.log("nome:" + nome)
 		var host = location.protocol + '//' + location.hostname;
@@ -84,7 +45,7 @@ console.log("fatto")
 
 	}
 	function neu(nome) {
-		car=prompt("Inserire il nome della cartella che si vuole create:")
+		car=prompt("Inserire il nome della cartella che si vuole creare:")
 		var host = location.protocol + '//' + location.hostname;
     fetch("http://ec2-15-160-169-49.eu-south-1.compute.amazonaws.com:3001/newfolder", {
       method: 'post', // Default is 'get'
@@ -144,17 +105,23 @@ function sub() {
 </svelte:head>
 <Menu/>
 <h1 class="tit">&nbsp;&nbsp;HOME</h1>
-<div><img id="cartest" class="icone"	 src="./IMG-1783-removebg-preview.png" width="32" on:click|preventDefault={event => neu(event.path[0].id)}/>
+<div><img id="cartest" class="icone"	 src="./add_folder-removebg-preview.png" width="32" on:click|preventDefault={event => neu(event.path[0].id)}/>
 </div><!--crea cartella-->
 <div>
-<img class="icone" id="cartest" src="./IMG-1783-removebg-preview.png" width="32" on:click={removefolder}/>
+<img class="icone" id="cartest" src="./remove_folder-removebg-preview.png" width="32" on:click={removefolder}/>
 </div><!--rimuovi cartella-->
-
-<div id="cartelle">
-</div>
+<div class="carte">
 {#each cartelle as file}
-<p>{file}</p>
+{#if file.split(".")[1] == null}
+<img src="folder-removebg-preview.png" class="folderd"/>
+<span>{file}</span><br>
+{:else}
+<a href={"http://ec2-15-160-169-49.eu-south-1.compute.amazonaws.com:3001/" + user + '/' + file}><img src="file-removebg-preview.png" class="folderd"/></a>
+<span>{file}</span><br>
+{/if}
 {/each}
+
+</div>
 <form ref='uploadForm'
       id='uploadForm'
       action='http://ec2-15-160-169-49.eu-south-1.compute.amazonaws.com:3001/upload'
@@ -163,7 +130,7 @@ function sub() {
 	  on:submit={sub}>
       <input type="file" class="file" name="sampleFile" />
 		<input type="hidden" name="user" value={user} /><br>
-		<input type='submit' value='Upload!' />
+		<input type='submit'class="up" value='Upload files' />
     </form>
 <style global>
 	@import 'filepond/dist/filepond.css';

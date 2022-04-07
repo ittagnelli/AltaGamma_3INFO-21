@@ -10,7 +10,7 @@ body{
     padding: 10px;
     display: block;
     background-attachment: fixed;
-    background-color: white;
+    background-color: black;
 }
 .wrapper {
   display: grid;
@@ -21,6 +21,7 @@ body{
 *{
     font-size: 105%;
     font-family: 'Playfair Display', serif;
+    
 }
 
 footer{
@@ -33,18 +34,24 @@ footer{
     color:gold;
 }
 .accedi{
-    border-radius: 20px;
-     font-size: 110%;
-     padding: 10px;
-     padding-top: 6px;
-     padding-bottom: 6px;
-     color: gold;
-     margin-top: 17px;
-     margin-right: 20px;
-     background-color: #04aa6d00;
-     margin-left: 10px;
-     padding-right: 25px;
-     padding-left: 25px;
+    font-size: 110%;
+    padding: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    color: gold;
+    background-color: #04aa6d00;
+    padding-right: 50px;
+    padding-left: 50px;
+    border-radius: 0px;
+    transition-property: background-color;
+    transition-duration: 5s;
+    transition-property: border;
+    transition-duration: 0.2s;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+#reg{
+    margin-top: 10px;
 }
 .pul{
     font-size: 75.5%;
@@ -62,6 +69,10 @@ footer{
     cursor: pointer;
     margin: black;
 
+}
+
+a:visited{
+    color:blue;
 }
 
 header{
@@ -96,12 +107,12 @@ header div button{
 
 img {
     border: 1px solid #000;
-    border-radius: 20px;
-    box-shadow: 0px 0px 13px 0.5px rgba(0,0,0,0.75);
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     opacity: 0.76;
     padding: 10px; 
-    width: 30;
-    height: 40;
+    width: 30px;
+    height: 40px;
 }
 
 .cardstyle{
@@ -150,8 +161,17 @@ img {
     right: 10px;
     left: 10px;
 }
+
+nav ul li{
+    transition-property: background-color,border;
+    transition-duration: 0.8s;
+}
+
 nav ul li:hover .card3{
     display: block;
+}
+nav ul li:hover{
+    border-bottom: 10px solid black;
 }
 nav ul li:hover .card1{
     display: block;
@@ -284,11 +304,19 @@ td /*.title-span*/{
 
 .mese{
     font-size: 70%;
+    color: white;
 }
 .info{
-    font-size: 50%;
+    font-size: 40%;
     border-radius: 9px;
     padding: 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border: 2px solid blue;
+}
+.info:hover{
+    font-size: 45%; 
+    cursor: pointer;
 }
 
 img{
@@ -299,37 +327,31 @@ img{
 }
 
 button{
-    border-radius: 20px;
     font-size: 140%;
     padding: 10px;
     padding-top: 6px;
     padding-bottom: 6px;
     color: gold;
-    margin-top: 17px;
-    background-color: #04aa6da2;
-    margin-left: 10px;
+    margin-top: 0px;
+    background-color: none;
+    margin-left: 0px;
     padding-right: 15px;
     padding-left: 15px;
+    border: 0px;
+    transition-property: border;
+    transition-duration: 0.2s;
+    transition-property: background-color;
+    transition-duration: 5s;
 
 }
 button:hover{
     background-color: #04aa6da2;
-    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
     cursor: pointer;
+    border-bottom: 2px solid gold;
 }
 
-.infouno, .infodue{
-    display: none;
-    background-color: none;
-    color: rgb(20, 20, 228);
-    text-align: center;
-    padding-top: 10px;
-    font-size: 140%;
 
-}
-.info:hover .infouno, .infodue:hover .infodue{
-    display: block;
-}
+
 .centro{
     width: 0px;
     background-color: rgba(0, 0, 0, 0);
@@ -363,8 +385,9 @@ input[type="submit"], .file{
 .folderd{
     opacity: 0.76;
     padding: 10px; 
-    width: 30;
-    height: 40;
+    width: 30px;
+    height: 30px;
+    background-color: white;
 }
 .filed{
     opacity: 0.76;
@@ -375,6 +398,32 @@ input[type="submit"], .file{
 }
 .icone{
     background-color: white;
-    height: 50px;
+    height: 45px;
     width: 50px;
+    margin-left: 10px;
+}
+.carte{
+    border:2px solid black;
+    padding: 20px;
+    width: 500px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    margin-left: 10px;
+    background-color: #04aa6da2;
+}
+input[type="submit"] {
+    width: 200px;
+    margin-left: 10px
+}
+.file{
+    margin-left: 10px;
+}
+.up{
+    
+}
+.up:hover{
+    border-color: gold;
+    background-color: #04aa6da2;
+    cursor: pointer;
 }

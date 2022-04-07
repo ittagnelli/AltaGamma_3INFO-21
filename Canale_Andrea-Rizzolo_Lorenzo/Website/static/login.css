@@ -63,7 +63,7 @@ h1{
      height: 25px;
  }
  input{
-     border-radius: 22px;
+     
      padding-left: 15px;
  }
  
@@ -78,28 +78,30 @@ h1{
  }
  
  button{
-     border-radius: 20px;
+     border-radius: 0px;
      font-size: 140%;
      padding: 10px;
      padding-top: 6px;
      padding-bottom: 6px;
      color: gold;
-     margin-top: 17px;
+     margin-top: 0px;
+     margin-left: 0px;
      background-color: rgba(39, 100, 97, 0.342);
-     margin-left: 10px;
      padding-right: 15px;
      padding-left: 15px;
      
  }
  button:hover{
      background-color: #04aa6da2;
-     box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
      cursor: pointer;
  }
  .accesso2{
      margin-top: 10px;
+     color:black;
+     border: 0px;
+     border-radius: 0px;
  }
  input[type="password"],input[type="text"]{
-      border-radius: 20px;
+      border-bottom: 2px solid gold;
       font-size: 75%
  }
