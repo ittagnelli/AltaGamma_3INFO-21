@@ -5,16 +5,16 @@
 
 <header>
 	<span>THECLOUD<a class="due" style="color: white;">.com</a></span>
-	<div class="pul" > 
-	  <a href="/"><button type="button" class="accedi">Home</button></a>
-	  </div>
-		
-	  <div class="pul" > 
-	   <a href="/login"><button type="button" class="accedi">Accedi</button></a>
-	  </div>
-		<div class="pul" > 
-		  <a href="/registrati"><button type="button" class="accedi">Registrati</button></a>
-		</div>     
+	<div class="pul">
+		<a href="/"><button type="button" class="accedi">Home</button></a>
+	</div>
+
+	<div class="pul">
+		<a href="/login"><button type="button" class="accedi">Accedi</button></a>
+	</div>
+	<div class="pul">
+		<a href="/registrati"><button type="button" class="accedi">Registrati</button></a>
+	</div>
 </header>
 
 <style>

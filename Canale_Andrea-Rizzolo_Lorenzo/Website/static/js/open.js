@@ -1,3 +1,3 @@
 function provo(par) {
-    console.log(par)
+	console.log(par);
 }
