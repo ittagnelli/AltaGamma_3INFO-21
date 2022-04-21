@@ -3,13 +3,11 @@
 	import '../app.css';
 </script>
 
-<Header></Header>
+<Header />
 
 <main>
 	<slot />
 </main>
-
-
 
 <style>
 </style>

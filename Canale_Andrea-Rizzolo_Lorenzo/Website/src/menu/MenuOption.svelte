@@ -1,22 +1,30 @@
 <script>
 	import { onMount, getContext } from 'svelte';
 	import { key } from './menu.js';
-	
+
 	export let isDisabled = false;
 	export let text = '';
-	
+
 	import { createEventDispatcher } from 'svelte';
-	const dispatch = createEventDispatcher();	
-	
+	const dispatch = createEventDispatcher();
+
 	const { dispatchClick } = getContext(key);
-	
-	const handleClick = e => {
+
+	const handleClick = (e) => {
 		if (isDisabled) return;
-		
+
 		dispatch('click');
 		dispatchClick();
-	}
+	};
 </script>
+
+<div class:disabled={isDisabled} on:click={handleClick}>
+	{#if text}
+		{text}
+	{:else}
+		<slot />
+	{/if}
+</div>
 
 <style>
 	div {
@@ -37,14 +45,3 @@
 		background: white;
 	}
 </style>
-
-<div 
-  class:disabled={isDisabled}
-  on:click={handleClick}
->
-	{#if text}
-		{text}
-	{:else}
-		<slot />
-	{/if}
-</div>
